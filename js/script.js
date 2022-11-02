@@ -1,8 +1,8 @@
 'use strict';
 
 const optArticleSelector = '.post',
-  optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles';
+    optTitleSelector = '.post-title',
+    optTitleListSelector = '.titles';
 
 function titleClickHandler(event) {
     event.preventDefault();
@@ -35,17 +35,17 @@ function titleClickHandler(event) {
 
     /* [DONE] remove class 'active' from all articles */
 
-    /* get 'href' attribtue from the clicked link */
+    /* [DONE] get 'href' attribtue from the clicked link */
 
     const articleSelector = clickedElement.getAttribute('href');
     console.log('Clicked element href: ' + articleSelector);
 
-    /* find the correct article using the selector (value of 'href' atrribute) */
+    /* [DONE] find the correct article using the selector (value of 'href' atrribute) */
 
     const targetArticle = document.querySelector(articleSelector);
     console.log('Article found: ', targetArticle);
 
-    /* add class 'active' to the correct article */
+    /* [DONE] add class 'active' to the correct article */
 
     targetArticle.classList.add('active');
 
@@ -57,26 +57,33 @@ for (let link of links) {
     link.addEventListener('click', titleClickHandler);
 }
 
-function generateTitleLinks(){
+function generateTitleLinks() {
 
     console.log('generateTitleLinks started!')
 
-    /* remove contents of titleList */
+    /* [DONE] remove contents of titleList */
 
     document.querySelector(optTitleListSelector).innerHTML = '';
-  
-    /* for each article */
-  
-      /* get the article id */
-  
-      /* find the title element */
-  
-      /* get the title from the title element */
-  
-      /* create HTML of the link */
-  
-      /* insert link into titleList */
-  
-  }
-  
-  generateTitleLinks();
+
+    /* [DONE] for each article */
+
+    const articles = document.querySelectorAll(optArticleSelector);
+    console.log('articles: ', articles);
+    for (let article of articles) {
+
+        /* [IN PROGRESS] get the article id */
+
+        const articleId = article.getAttribute('id');
+        console.log('article: ', articleId);
+
+        /* find the title element */
+
+        /* get the title from the title element */
+
+        /* create HTML of the link */
+
+        /* insert link into titleList */
+    }
+}
+
+generateTitleLinks();
