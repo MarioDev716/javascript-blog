@@ -1,13 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext');
+@import url(https://fonts.googleapis.com/css?family=Euphoria+Script:regular);
 
 /* Variables */
 
 $color-light: #fff;
 $color-dark: #444;
 
-$font-logo: 'Sacramento', cursive;
+$font-logo: 'Euphoria Script', cursive;
 $font-header: 'Oswald', sans-serif;
 $font-text: 'Source Sans Pro', sans-serif;
+
+$shadow: 0 0 3px rgba(0, 0, 0, 0.329);
+
+// https://coolors.co/2b2d42-8d99ae-edf2f4-ef233c-d90429
+
+$space-cadet: #2b2d42ff;
+$manatee: #8d99ae;
+$cultured: #edf2f4ff;
+$imperial-red: #ef233cff;
+$amaranth-red: #d90429ff;
 
 /* Global */
 
@@ -18,9 +29,13 @@ $font-text: 'Source Sans Pro', sans-serif;
 }
 
 body {
-    background: $color-light;
+    background: $manatee;
+    background-image: url(https://images.pexels.com/photos/10096370/pexels-photo-10096370.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     font-family: $font-text;
-    color: $color-dark;
+    color: $space-cadet;
     font-weight: 300;
     font-size: 16px;
     line-height: 1.7;
@@ -29,19 +44,48 @@ body {
 .container {
     max-width: 1140px;
     margin: 0 auto;
+    min-width: 305px;
 }
 
 .section-title {
     font-size: 22px;
     text-transform: uppercase;
     font-family: $font-header;
-    font-weight: 600;
+    font-weight: 300;
+    // color: $imperial-red;
 
     span {
         text-transform: none;
         font-weight: 400;
         color: lighten($color-dark, 20%);
     }
+}
+
+.post-title{
+    font-size: 25px;
+    margin-top: 15px;
+}
+
+a, a:hover, a:visited {
+    text-decoration: none;
+    color: $imperial-red;
+    font-weight: bold;
+}
+
+a {
+    border-bottom: 2px solid #8d99ae00;
+    transition: all 0.5s;
+}
+
+a:hover {
+    border-bottom: 2px solid #8d99ae;
+    transition: all 0.5s;
+}
+
+
+
+h1, h2, h3, h4, h5 ,h5 {
+    color: $space-cadet;
 }
 
 /* Layout */
@@ -56,16 +100,18 @@ body {
 }
 
 .posts {
-    flex: 2 0 0;
+    flex: 4 0 0;
 }
 
 .sidebar,
 .posts {
-    background: $color-light;
+    background: $cultured;
     margin-right: 10px;
     padding: 40px;
     border: 1px solid $color-dark;
     border-radius: 5px;
+    box-shadow: $shadow;
+    border-color: $space-cadet;
 }
 
 /* Logo */
@@ -76,6 +122,8 @@ body {
     font-size: 104px;
     line-height: 1;
     text-align: center;
+    color: $imperial-red;
+    text-shadow: $shadow;
 }
 
 /* Lists */
@@ -100,7 +148,7 @@ body {
 
 .authors {
     li {
-        margin-bottom: 12px;
+        // margin-bottom: 12px;    
     }
 }
 
@@ -131,3 +179,63 @@ body {
     color: $color-light;
     padding: 1px 2px;
 } */
+
+@media screen and (max-width: 1160px){
+
+    .wrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+        // min-width: 300px;
+
+        >:nth-child(1){
+            // background-color: rgba(255, 0, 0, 0.199);   
+            flex: 1 0 0;
+        }
+
+        >:nth-child(2){
+            // background-color: rgba(255, 0, 0, 0.199); 
+            flex: 5 0 0;  
+        }
+
+        >:nth-child(3){
+            // background-color: rgba(255, 0, 0, 0.199);
+            flex: 100%;
+            margin-top: 10px;
+            // display: none;   
+        }
+    }
+
+    .sidebar {
+        flex: 1 0 0;
+    }
+    
+    .posts {
+        flex: 1 0 0;
+        // margin: 10px 10px 10px 0;
+    }
+
+}
+
+@media screen and (max-width: 550px){
+    body {
+/*         background-color: red;   
+        background-image: none; */
+    } 
+
+    .wrapper {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        min-width: 300px;
+    }
+
+    .sidebar {
+        flex: 1 0 0;
+    }
+    
+    .posts {
+        flex: 1 0 0;
+        margin: 10px 10px 10px 0;
+    }
+
+}
+
