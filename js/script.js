@@ -3,7 +3,8 @@
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list';
+  optArticleTagsSelector = '.post-tags .list',
+  optArticleAuthorSelector = '.post .post-author';
 
 function titleClickHandler(event) {
   event.preventDefault();
@@ -49,7 +50,7 @@ function generateTitleLinks(customSelector = '') {
 
   const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
-  console.log('customSelector: ' + customSelector);
+  // console.log('customSelector: ' + customSelector);
 
   /* [DONE] for each article */
 
@@ -122,10 +123,10 @@ function tagClickHandler(event) {
   const clickedElement = this;
   /* make a new constant "href" and read the attribute "href" of the clicked element */
   const href = clickedElement.getAttribute('href');
-  console.log('Tag link was clicked: ' + href);
+  // console.log('Tag link was clicked: ' + href);
   /* make a new constant "tag" and extract tag from the "href" constant */
   const tag = href.replace('#tag-', '');
-  console.log('Only tag name: ' + tag);
+  // console.log('Only tag name: ' + tag);
   // console.log(tag);
   /* find all tag links with class active */
   const activeLinks = document.querySelectorAll('a.active[href^="#tag-"]');
@@ -143,7 +144,7 @@ function tagClickHandler(event) {
   for (let tagLink of tagLinks) {
     /* add class active */
     tagLink.classList.add('active');
-    console.log('Active class add to: ' + tagLink);
+    // console.log('Active class add to: ' + tagLink);
   }
   /* END LOOP: for each found tag link */
   /* execute function "generateTitleLinks" with article selector as argument */
@@ -162,3 +163,18 @@ function addClickListenersToTags() {
 }
 
 addClickListenersToTags();
+
+function generateAuthors() {
+  console.log('generateAuthors started!');
+  
+}
+
+generateAuthors();
+
+/* <!-- Wskazówki
+Potrzebujesz napisać funkcję generateAuthors, wzorując się na generateTags,
+Funkcja generateAuthors będzie prostsza niż generateTags, ponieważ jest tylko jeden autor artykułu – nie musisz dzielić tego pola funkcją split, ani wykonywać pętli podobnej do tej iterującej po tagach. Dla każdego artykułu będzie tylko jeden link do autora.
+Napisz też funkcje addClickListenersToAuthors i authorClickHandler, wzorując się na addClickListenersToTags i tagClickHandler.
+Nie musisz w żaden sposób zmieniać funkcji generateTitleLinks – wystarczy, że w funkcji authorClickHandler wywołasz ją z odpowiednim argumentem. Pamiętaj, że w tym wypadku w selektorze atrybutu użyjesz łącznika = zamiast ~=.
+Nie zapomnij dodać nowej stałej ustawień – optArticleAuthorSelector.
+Usuń przykładową zawartość listy autorów z kodu HTML – nie będzie nam już potrzebna. --> */
