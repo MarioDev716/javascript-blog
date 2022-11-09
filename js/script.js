@@ -224,6 +224,7 @@ function authorClickHandler(event) {
   const clickedElement = this;
   clickedElement.getAttribute('innerHTML');
   console.log('innerHTML: ' + clickedElement);
+  generateTitleLinks('.post[data-author = "clickedElement"]');
 }
 
 function addClickListenersToAuthors() {
