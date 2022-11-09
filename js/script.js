@@ -4,7 +4,8 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
-  optArticleAuthorSelector = '.post-author';
+  optArticleAuthorSelector = '.post-author',
+  optTagsListSelector = '.tags .list';
 
 function titleClickHandler(event) {
   // console.log('titleClickHandler started!');
@@ -240,16 +241,44 @@ function addClickListenersToAuthors() {
 
 addClickListenersToAuthors();
 
-/* Wskazówki */
+function generateTags(){
+  /* [NEW] create a new variable allTags with an empty array */
+  let allTags = [];
 
-/* [DONE] Potrzebujesz napisać funkcję generateAuthors, wzorując się na generateTags, */
+  /* find all articles */
 
-/* [DONE] Funkcja generateAuthors będzie prostsza niż generateTags, ponieważ jest tylko jeden autor artykułu – nie musisz dzielić tego pola funkcją split, ani wykonywać pętli podobnej do tej iterującej po tagach. Dla każdego artykułu będzie tylko jeden link do autora. */
+  /* START LOOP: for every article: */
 
-/* Napisz też funkcje addClickListenersToAuthors i authorClickHandler, wzorując się na addClickListenersToTags i tagClickHandler. */
+    /* find tags wrapper */
 
-/* Nie musisz w żaden sposób zmieniać funkcji generateTitleLinks – wystarczy, że w funkcji authorClickHandler wywołasz ją z odpowiednim argumentem. Pamiętaj, że w tym wypadku w selektorze atrybutu użyjesz łącznika = zamiast ~=. */
+    /* make html variable with empty string */
 
-/* Nie zapomnij dodać nowej stałej ustawień – optArticleAuthorSelector. */
+    /* get tags from data-tags attribute */
 
-/* Usuń przykładową zawartość listy autorów z kodu HTML – nie będzie nam już potrzebna. */
+    /* split tags into array */
+
+    /* START LOOP: for each tag */
+
+      /* generate HTML of the link */
+
+      /* add generated code to html variable */
+
+      /* [NEW] check if this link is NOT already in allTags */
+      if(allTags.indexOf(linkHTML) == -1){
+        /* [NEW] add generated code to allTags array */
+        allTags.push(linkHTML);
+      }
+
+    /* END LOOP: for each tag */
+
+    /* insert HTML of all the links into the tags wrapper */
+
+  /* END LOOP: for every article: */
+
+  /* [NEW] find list of tags in right column */
+  const tagList = document.querySelector(optTagsListSelector);
+
+  /* [NEW] add html from allTags to tagList */
+  tagList.innerHTML = allTags.join(' ');
+}
+
