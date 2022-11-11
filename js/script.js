@@ -125,11 +125,6 @@ function generateTags() {
 
       /* add generated code to html variable */
       html = html + tagHTML;
-      /* [NEW] check if this link is NOT already in allTags */
-      if (allTags.indexOf(linkHTML) == -1) {
-        /* [NEW] add generated code to allTags array */
-        allTags.push(linkHTML);
-      }
     }
     /* END LOOP: for each tag */
 
@@ -137,12 +132,6 @@ function generateTags() {
     tagsWrapper.innerHTML = html;
   }
   /* END LOOP: for every article: */
-
-  /* [NEW] find list of tags in right column */
-  const tagList = document.querySelector(optTagsListSelector);
-
-  /* [NEW] add html from allTags to tagList */
-  tagList.innerHTML = allTags.join(' ');
 }
 
 generateTags();
@@ -218,11 +207,11 @@ function generateAuthors() {
     // console.log('href: ', articleName);
     // console.log('Author: ', authorName);
     const authorHTML =
-      '<a href="#' + articleName + '"> author: ' + authorName + '</a>';
+      '<a href="#author-' + authorName + '"> author: ' + authorName + '</a>';
     // console.log('HTML: ' + authorHTML);
     const test = '#' + articleName + ' > .post-author';
     // console.log('Test: ' + test);
-    const authorWrapper = document.querySelector(test);
+    const authorWrapper = article.querySelector(test);
     // console.log('Article selector: ' + authorWrapper);
     authorWrapper.innerHTML = authorHTML;
   }
