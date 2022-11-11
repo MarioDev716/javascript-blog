@@ -29,8 +29,8 @@ $amaranth-red: #d90429ff;
 }
 
 body {
-  background: $manatee;
-  background-image: url(https://images.pexels.com/photos/10096370/pexels-photo-10096370.jpeg);
+  // background: $manatee;
+  background-image: url(/images/blurry-gradient-haikei.svg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -134,8 +134,9 @@ h5 {
   font-weight: 400;
   font-size: 104px;
   line-height: 1;
-  text-align: center;
-  color: $imperial-red;
+  text-align: left;
+  padding-left: 20px;
+  color: $color-light;
   text-shadow: $shadow;
 }
 
