@@ -91,6 +91,20 @@ function generateTitleLinks(customSelector = '') {
 
 generateTitleLinks();
 
+function calculateTagsParams(tags) {
+  /* [DONE] Add object const with default value  */
+  const params = {'max': 0, 'min': 999999};
+  /* [DONE] LOOP: for each tags value */
+  for (let tag in tags){
+    console.log(tag + ' is used ' + tags[tag] + ' times');
+    /* [DONE] Calculate min and max values for tags argument */
+    params.max = Math.max(tags[tag], params.max);
+    params.min = Math.min(tags[tag], params.min);
+  }
+
+  return params;
+}
+
 function generateTags() {
   /* [DONE] create a new variable allTags with an empty array */
   /* [DONE] change array to object */
@@ -143,6 +157,8 @@ function generateTags() {
   const tagList = document.querySelector(optTagsListSelector);
 
   /* [NEW] create variable for all links HTML code */
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams: ', tagsParams);
   let allTagsHTML = '';
 
   /* [NEW] START LOOP: for each tag in allTags */
@@ -157,7 +173,6 @@ function generateTags() {
       allTags[tag] +
       ') </br>';
   }
-  console.log('allTagsHTML: ', allTagsHTML);
   tagList.innerHTML = allTagsHTML;
 }
 
