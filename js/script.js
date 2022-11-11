@@ -58,7 +58,6 @@ function generateTitleLinks(customSelector = '') {
     optArticleSelector + customSelector
   );
 
-
   let html = '';
 
   for (let article of articles) {
@@ -93,8 +92,9 @@ function generateTitleLinks(customSelector = '') {
 generateTitleLinks();
 
 function generateTags() {
-  /* [DONE-NEW] create a new variable allTags with an empty array */
-  let allTags = [];
+  /* [DONE] create a new variable allTags with an empty array */
+  /* [DONE] change array to object */
+  let allTags = {};
 
   /* [DONE] find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
@@ -121,13 +121,15 @@ function generateTags() {
       /* add generated code to html variable */
       html = html + tagHTML;
 
-      /* [NEW] check if this link is NOT already in allTags */
+      /* [DONE] check if this link is NOT already in allTags */
 
       let linkHTML = tagHTML;
-      if (allTags.indexOf(linkHTML) == -1) {
-        /* [NEW] add generated code to allTags array */
-        allTags.push(linkHTML);
-        // console.log('Added link: ' + tagHTML);
+      /* [DONE] Change parameters to use object structure */
+      if (!allTags.hasOwnProperty(tag)) {
+        /* [DONE] add generated code to allTags array */
+        allTags[tag] = 1;
+      } else {
+        allTags[tag]++;
       }
     }
     /* END LOOP: for each tag */
@@ -140,8 +142,23 @@ function generateTags() {
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector(optTagsListSelector);
 
-  /* [NEW] add html from allTags to tagList */
-  tagList.innerHTML = allTags.join(' ');
+  /* [NEW] create variable for all links HTML code */
+  let allTagsHTML = '';
+
+  /* [NEW] START LOOP: for each tag in allTags */
+  for (let tag in allTags) {
+    /* [NEW] generate code of a link and add it to allTagsHTML */
+    allTagsHTML +=
+      '<a href="#tag-' +
+      tag +
+      '"> ' +
+      tag +
+      ' </a> (' +
+      allTags[tag] +
+      ') </br>';
+  }
+  console.log('allTagsHTML: ', allTagsHTML);
+  tagList.innerHTML = allTagsHTML;
 }
 
 generateTags();
