@@ -221,12 +221,17 @@ function generateAuthors() {
 generateAuthors();
 
 function authorClickHandler(event) {
+
+  /* prevent default action for this event */
   event.preventDefault();
   console.clear();
   console.log('>>> authorClickHandler started!');
+
+  /* make new constant named "clickedElement" and give it the value of "this" */
   const clickedElement = this;
-  clickedElement.getAttribute('innerHTML');
-  console.log('innerHTML: ' + clickedElement);
+  
+  clickedElement.getAttribute('data-author');
+  console.log('data-author: ' + clickedElement);
   generateTitleLinks('.post[data-author = "clickedElement"]');
 }
 
